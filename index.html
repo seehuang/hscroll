@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>机试题目</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-sec header-sec-act">发布作品</div>
+		<div class="header-sec">发布文章</div>
+	</div><!-- header -->
+
+	<div class="main">
+		<div class="main-title">
+			<div class="mtitle-left mf-color"><span class="must-sign">*</span>作品标题</div>
+			<input type="text" id="mtitleMid" class="mtitle-mid" maxlength="20" placeholder="品牌标识规范">
+			<div class="mtitle-right mf-color"><span id="mtitleSpan">0</span>/20</div>
+		</div>
+
+		<div class="main-class mb-bg">
+			<div class="mtitle-left mf-color"><span class="must-sign">*</span>作品分类</div>
+			<input type="text" class="mclass-mid" id="mclassMid" value="请选择分类">
+			<div class="mtitle-select" id="mtitleSelect">
+				<div class="mtitleSel-left" id="mtitleSelLeft">
+					<ul id="mtitleSelLeftUL">
+					</ul>
+				</div>
+				<div class="mtitleSel-right" id="mtitleSelRight">
+					<ul id="mtitleSelRightUL">
+						<li>
+							<div>分类1</div>
+						</li>
+						<li>
+							<div>分类2</div>
+						</li>
+						<li>
+							<div>分类3</div>
+						</li>
+					</ul>
+					<div class="Con_Scorll" id="Con_Scorll">  
+				        <div class="Do_Scorll" id="Do_Scorll"></div>  
+				      </div>  
+				</div>
+			</div>
+		</div><!-- main-class -->
+
+		<div class="main-intro">
+			<div class="mtitle-left mf-color">作品说明</div>
+			<!-- IE 6,7,8的textarea不支持maxlength属性，需要JS控制 -->
+			<textarea  type="text" id="mintroMid" class="mintro-mid" value="品牌标识规范" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
+					<div class="mtitle-right mf-color"><span id="mintroSpan">0</span>/200</div>
+		</div>
+
+		<div class="main-tag mb-bg">
+			<div class="mtitle-left mf-color">作品标签</div>
+			<div class="mtag-wrap">
+				<input type="text" class="mtag-mid" id="mtagMid"  >
+				<div class="mtag-li">
+					<ul id="mtagUL">
+					<!-- <li>
+							<div>电商1</div>
+							<span>x</span>
+						</li> -->
+					</ul>
+				</div>	
+			</div>
+			
+		</div>
+	</div><!-- main -->
+	<script src="js/jquery-1.7.1.js"></script>
+	<script src="js/1.js"></script>
+	<script src="js/index.js"></script>
+	
+</body>
+</html>
