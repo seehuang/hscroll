@@ -1,3 +1,7 @@
+/**
+ * by hc 
+ */
+
 //竖向的滚动条，四个参数，可视区域ID，内容区域Id，滚动条区域，滚动条，  
 function HScroll(id1,id2,id3,id4){  
     var container  = document.getElementById(id1),//可视区域  
@@ -6,7 +10,7 @@ function HScroll(id1,id2,id3,id4){
         scroll      = document.getElementById(id4),//滚动条  
           startY   = 0,//开始位置    
           lastY    = 0,//结束位置  
-            YN     = false,  
+            YN     = false,  //是否是拖动状态，true则允许拖动滚动条
               bBtn = true;//判断滚动条上滚还是下滚  
        
         var scrollHeight=container.offsetHeight*scrollArea.offsetHeight/content.offsetHeight;
