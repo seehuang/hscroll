@@ -1,64 +1,63 @@
 //竖向的滚动条，四个参数，可视区域ID，内容区域Id，滚动条区域，滚动条，  
 function HScroll(id1,id2,id3,id4){  
-    var container  = document.getElementById(id1),//可视区域  
-        content    = document.getElementById(id2),//内容区域  
-        scrollArea = document.getElementById(id3),//滚动条活动区域  
-        scroll      = document.getElementById(id4),//滚动条  
+    var $container = $(id1),//可视区域  
+        $content   = $(id2),//内容区域  
+        $scrollArea = $(id3),//滚动条活动区域  
+        $sroll     = $(id4),//滚动条  
           startY   = 0,//开始位置    
           lastY    = 0,//结束位置  
             YN     = false,  
               bBtn = true;//判断滚动条上滚还是下滚  
-       
-        var scrollHeight=container.offsetHeight*scrollArea.offsetHeight/content.offsetHeight;
-        var scrollFill=scrollHeight>=scrollArea.offsetHeight?true:false;
-        content.style.top="0";
-        scroll.style.top="0"
-        scroll.style.display="block";
+        
+        var srollHeight=$container.height()*$scrollArea.height()/$content.outerHeight();
+        var scrollFill=srollHeight>=$scrollArea.height()?true:false;
 
-        //判断是否
+        $content.css({'top':'0px'});
+        $sroll.css({'top':'0px'});
+        $sroll.show();
+
         if(scrollFill==true){
-             scroll.style.display="none";
+             $sroll.hide();
         }
-        scroll.style.height=scrollHeight+"px";
- 
-        scroll.onmousedown=function(e){
+
+        $sroll.css({'height':$container.height()*$scrollArea.height()/$content.outerHeight()+'px'});  
+        
+        $sroll.mousedown(function(e){  
             startY = e.clientY - this.offsetTop;    
             this.setCapture && this.setCapture();//避免IE下拖拽过快鼠标失去对象  
             YN = true;  
             return false;  
-        }
+        });  
 
-        scroll.mousemove=function(e){
-            var maxVal = scrollArea.offsetHeight - this.offsetHeight;  
+        $sroll.mousemove(function(e){  
+            var maxVal = $scrollArea.height() - $(this).height();  
             if(YN){  
                 lastY = e.clientY - startY;  
                 lastY = lastY < 0 ? 0 :lastY;  
                 lastY = lastY > maxVal ? maxVal : lastY;  
-                this.style.top=lastY+"px";
-                content.style.top=-scrollArea.offsetHeight*lastY/this.offsetHeight;
+                $(this).css({'top':lastY+'px'});  
+                $content.css({'top':-$scrollArea.height()*lastY/$(this).height()+'px'});  
                 window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty(); // 防止拖动文本    
                 e.stopPropagation();   
             }  
             return false;  
-        }
+        });  
 
-        scroll.onmouseup=function(e){
+        $sroll.mouseup(function(e){  
             YN = false;  
             NumY = lastY;  
             return false;  
-        }
-       
+        });  
         //为内容区域添加滑轮滚动事件  
-        if(content.addEventListener){  
-            content.addEventListener("DOMmouseScrolloll",mouseScroll,false);  
-            scrollArea.addEventListener("DOMmouseScrolloll",mouseScroll,false);  
+        if($content[0].addEventListener){  
+            $content[0].addEventListener('DOMmouseScrolloll',mouseScroll,false);  
+            $scrollArea[0].addEventListener('DOMmouseScrolloll',mouseScroll,false);  
         }  
 
-        content.onmousewheel = mouseScroll;  
-        scrollArea.onmousewheel = mouseScroll;  
+        $content[0].onmousewheel = mouseScroll;  
+        $scrollArea[0].onmousewheel = mouseScroll;  
 
         function mouseScroll(ev){  
-            console.log("gg");
             var ev = ev || window.event,  
               TopY = 0;  
               //如果内容少不需要滚动条，直接return，不在执行判断
@@ -72,16 +71,17 @@ function HScroll(id1,id2,id3,id4){
                 bBtn = ev.wheelDelta<0  ?  true : false;  
             }  
             if(bBtn){   //下  
-                TopY = content.offsetTop -10;  
+                TopY = $content.position().top-10;  
             }  
             else{  //上  
-                TopY = content.offsetTop +10;  
+                TopY = $content.position().top+10;  
             }  
-            var maxTop = content.offsetHeight-container.offsetHeight;  
+            var maxTop = $content.outerHeight()-$container.outerHeight();  
             TopY = TopY > 0 ? 0 : TopY;  
             TopY = TopY < -maxTop ? -maxTop : TopY;  
-            content.style.top =TopY+"px";
-            scroll.style.top =scroll.offsetHeight*Math.abs(TopY)/scrollArea.offsetHeight+"px";
+
+            $content.css({'top':TopY+'px'});  
+            $sroll.css({'top':$sroll.height()*Math.abs(TopY)/$scrollArea.height()+'px'});  
 
             if(ev.preventDefault){  
                 ev.preventDefault();  
@@ -91,5 +91,5 @@ function HScroll(id1,id2,id3,id4){
             }  
         }  
 }  
-HScroll('mtitleSelRight','mtitleSelRightUL','Con_Scorll','Do_Scorll');  
+HScroll('#mtitleSelRight','#mtitleSelRightUL','#Con_Scorll','#Do_Scorll');  
  
