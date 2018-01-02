@@ -6,5 +6,6 @@
 ## 工作原理
   
   4个区域，固定高度的显示区，不固定高度的内容区，滚动条容器区，滚动条
+ ![Image text](https://github.com/iiling/hscroll/blob/master/img/01.png)
 
 ## 使用方法
