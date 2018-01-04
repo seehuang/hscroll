@@ -10,7 +10,7 @@
 
 ## 使用方法
   实例化构造函数，并传入四个区域的id值
-  # HScroll('sec01','sec02','sec03','sec04'); 
+  > HScroll('sec01','sec02','sec03','sec04'); 
   
 ## 最终效果
   ![Image text](https://github.com/iiling/hscroll/blob/master/img/02.gif)
