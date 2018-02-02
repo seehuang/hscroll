@@ -58,7 +58,7 @@
 			mtitleSelRightUL.append(htmlRight);
 			//每次点击刷新滚动条组件
 			//HScroll('#mtitleSelRight','#mtitleSelRightUL','#Con_Scorll','#Do_Scorll');  
-			HScroll('mtitleSelRight','mtitleSelRightUL','Con_Scorll','Do_Scorll');  
+			My.HScroll.init('mtitleSelRight','mtitleSelRightUL','Con_Scorll','Do_Scorll');  
 		})
 		//分类选择 事件代理，右边边二级栏目
 		mtitleSelRightUL.delegate("li","click",function(e){
