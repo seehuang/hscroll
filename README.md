@@ -10,7 +10,7 @@
 ## 工作原理
   
   4个区域，固定高度的显示区，不固定高度的内容区，滚动条容器区，滚动条
- ![Image text](https://github.com/iiling/hscroll/blob/master/img/01.png)
+ ![Image text](https://user-images.githubusercontent.com/16111288/36186691-a357d4fa-117b-11e8-93a8-4865e419f60c.png)
 
 ## 使用方法
 <pre>
@@ -21,4 +21,4 @@
  </pre>
   
 ## 最终效果
-  ![Image text](https://github.com/iiling/hscroll/blob/master/img/02.gif)
+  ![Image text](https://user-images.githubusercontent.com/16111288/36186689-a06e7b72-117b-11e8-8f22-c332500d4add.gif)
